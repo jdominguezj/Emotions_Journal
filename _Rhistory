@@ -1,0 +1,512 @@
+ss <- silhouette(km.res$cluster, data.dist)
+mean(ss[, 3])
+}
+# Compute and plot wss for k = 2 to k = 15
+k.values <- 2:15
+# extract avg silhouette for 2-15 clusters
+avg_sil_values <- map_dbl(k.values, avg_sil)
+plot(k.values, avg_sil_values,
+type = "o", pch = 15, frame = FALSE,
+col= 10,
+xlab = "Number of clusters K",
+ylab = "Average Silhouettes")
+wisc.hclust.clusters<- cutree(wisc.hclust,k=4)
+table(wisc.hclust.clusters,diagnosis)
+mc1<-table(wisc.km2$cluster,diagnosis)
+mc1 <-table(wisc.km2$cluster,diagnosis)
+mc1
+table(wisc.km2$cluster,diagnosis)
+table(as.matrix(wisc.km2$cluster),as.matrix(wisc.hclust.clusters))
+wisc.pr
+wisc.pr$eig
+wisc.pr$var
+princomp(wisc.data.scale)
+z<-princomp(wisc.data.scale)
+z$scores
+wisc.pr$ind
+z$scores
+knitr::opts_chunk$set(echo = TRUE)
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores
+scores(scores(1:9))
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores
+scores(1:9)
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores
+scores(1:9,:)
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[1:10]
+scores
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[1:10,]
+scores
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[,1:10]
+scores
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[,1:10]
+pc.comp1 <- scores[,1]
+pc.comp2 <- scores[,2]]
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[,1:10]
+pc.comp1 <- scores[,1]
+pc.comp2 <- scores[,2]
+wisc.pca$scores
+h<-PCA(wisc.data.scale)
+library(dplyr)
+library(ggplot2)
+library(FactoMineR)
+library(factoextra)
+library(magrittr)
+library(knitr)
+library(purrr)
+library(dendextend)
+library(cluster)
+h<-PCA(wisc.data.scale)
+h$eig
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[,1:7]
+pc.comp1 <- scores[,1]
+pc.comp2 <- scores[,2]
+wisc.pca<-princomp(wisc.data.scale)
+scores<-wisc.pca$scores[,1:7]
+pc.comp1 <- scores[,1]
+pc.comp2 <- scores[,2]
+data.dist <- dist(wisc.pca,"euclidean")
+wisc.pca<-PCA(wisc.data.scale)
+#scores<-wisc.pca$scores[,1:7]
+#pc.comp1 <- scores[,1]
+#pc.comp2 <- scores[,2]
+data.dist <- dist(wisc.pca,"euclidean")
+wisc.pca$eig
+wisc.pca<-PCA(wisc.data.scale,graph = FALSE)
+#scores<-wisc.pca$scores[,1:7]
+#pc.comp1 <- scores[,1]
+#pc.comp2 <- scores[,2]
+data.dist <- dist(wisc.pca,"euclidean")
+wisc.pca<-PCA(wisc.data.scale,ncp = 3,graph = FALSE)
+#scores<-wisc.pca$scores[,1:7]
+#pc.comp1 <- scores[,1]
+#pc.comp2 <- scores[,2]
+data.dist <- dist(wisc.pca,"euclidean")
+wisc.pca<-PCA(wisc.data.scale,ncp = 3,graph = FALSE)
+#scores<-wisc.pca$scores[,1:7]
+#pc.comp1 <- scores[,1]
+#pc.comp2 <- scores[,2]
+data.dist <- dist(wisc.pca$eig,"euclidean")
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+#scores<-wisc.pca$scores[,1:7]
+#pc.comp1 <- scores[,1]
+#pc.comp2 <- scores[,2]
+data.dist <- dist(wisc.pca$eig,"euclidean")
+#Setting Number of principal components at 7 in order to get at least 90% of the variability in the data
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+#scores<-wisc.pca$scores[,1:7]
+#pc.comp1 <- scores[,1]
+#pc.comp2 <- scores[,2]
+pca.dist <- dist(wisc.pca$eig,"euclidean")
+wisc.pr.hclust <- hclust(pca.dist,method="complete")
+wisc.pr.hclust
+wisc.pr.hclust$merge
+wisc.pr.hclust$height
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pca
+wisc.pca$eig
+pca.dist
+#Setting Number of principal components at 7 in order to get at least 90% of the variability in the data
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+pca.dist <- dist(wisc.pca$var ,"euclidean")
+wisc.pca$ind
+#Setting Number of principal components at 7 in order to get at least 90% of the variability in the data
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+pca.dist <- dist(wisc.pca$cos2 ,"euclidean")
+wisc.pr$cos2
+wisc.pr$dist
+wisc.pr$ind$cos2
+#Setting Number of principal components at 7 in order to get at least 90% of the variability in the data
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+pca.dist <- dist(wisc.pca$ind$cos2 ,"euclidean")
+wisc.pr.hclust <- hclust(pca.dist,method="complete")
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+table(wisc.hclust.clusters,diagnosis)
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(FactoMineR)
+library(factoextra)
+library(magrittr)
+library(knitr)
+library(purrr)
+library(dendextend)
+library(cluster)
+wisc.df <-read.csv("WisconsinCancer.csv")
+wisc.data <-as.matrix(wisc.df[3:32])
+rownames(wisc.data)<- make.names(paste(wisc.df[,1]),unique=TRUE)
+diagnosis <- ifelse(wisc.df[,2] =="M",1,0)
+wisc.data <- cbind(wisc.data, diagnosis)
+head(colMeans(wisc.data))
+head(apply(wisc.data, MARGIN = 1,FUN = "sd"))
+#Scaling dataset
+wisc.data.scale<-scale(wisc.data)
+wisc.pr<-PCA(wisc.data.scale)
+head(summary(wisc.pr))
+data.scaled <- scale(wisc.data)
+data.dist <- dist(wisc.data,"euclidean")
+wisc.hclust <- hclust(data.dist,method="complete")
+#By using the dendextend package we can separate the clusters by colors
+dendh <- as.dendrogram(wisc.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.hclust.clusters<- cutree(wisc.hclust,k=4)
+table(wisc.hclust.clusters,diagnosis)
+set.seed(144)
+wisc.km2 <- kmeans(wisc.data.scale,2,iter.max = 20)
+wisc.km3 <- kmeans(wisc.data.scale,3,iter.max = 20)
+wisc.km4 <- kmeans(wisc.data.scale,4,iter.max = 20)
+wisc.km5 <- kmeans(wisc.data.scale,5,iter.max = 20)
+table(wisc.km2$cluster,diagnosis)
+table(as.matrix(wisc.km2$cluster),as.matrix(wisc.hclust.clusters))
+fviz_cluster(wisc.km2,wisc.data.scale)
+fviz_cluster(wisc.km3,wisc.data.scale)
+fviz_cluster(wisc.km4,wisc.data.scale)
+fviz_cluster(wisc.km5,wisc.data.scale)
+# Computing the average silhouette for k clusters
+avg_sil <- function(k) {
+km.res <- kmeans(wisc.data.scale, centers = k, nstart = 25)
+ss <- silhouette(km.res$cluster, data.dist)
+mean(ss[, 3])
+}
+# Compute and plot wss for k = 2 to k = 15
+k.values <- 2:15
+# extract avg silhouette for 2-15 clusters
+avg_sil_values <- map_dbl(k.values, avg_sil)
+plot(k.values, avg_sil_values,
+type = "o", pch = 15, frame = FALSE,
+col= 10,
+xlab = "Number of clusters K",
+ylab = "Average Silhouettes")
+#Setting Number of principal components at 7 in order to get at least 90% of the variability in the data
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+pca.dist <- dist(wisc.pca$ind$cos2 ,"euclidean")
+wisc.pr.hclust <- hclust(pca.dist,method="complete")
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+table(wisc.pr.hclust.clusters,diagnosis)
+table(wisc.hclust.clusters,diagnosis)
+wisc.pca
+#Setting Number of principal components at 7 in order to get at least 90% of the variability in the data
+wisc.pca<-PCA(wisc.data.scale,ncp = 7,graph = FALSE)
+pca.dist <- dist(wisc.pca$ind$coord ,"euclidean")
+wisc.pr.hclust <- hclust(pca.dist,method="complete")
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+table(wisc.pr.hclust.clusters,diagnosis)
+table(wisc.hclust.clusters,diagnosis)
+wisc.pr$eig
+wisc.pr$ind$coord
+table(wisc.km2$cluster,diagnosis)
+table(wisc.pr.hclust.clusters,diagnosis)
+table(wisc.hclust.clusters,diagnosis)
+knitr::kable(table(wisc.km2$cluster,diagnosis))
+knitr::kable(table(wisc.pr.hclust.clusters,diagnosis))
+knitr::kable(table(wisc.hclust.clusters,diagnosis))
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+knitr::kable(table(wisc.km2$cluster,diagnosis))
+knitr::kable(table(wisc.pr.hclust.clusters,diagnosis))
+knitr::kable(table(wisc.hclust.clusters,diagnosis))
+?knitr::kable
+knitr::kable(table(wisc.km2$cluster,diagnosis),booktabs=TRUE, caption = "Actual diagnosis")
+knitr::kable(table(wisc.pr.hclust.clusters,diagnosis),booktabs=TRUE, caption = "Actual diagnosis")
+knitr::kable(table(wisc.hclust.clusters,diagnosis))
+knitr::kable(table(wisc.km2$cluster,diagnosis),booktabs=TRUE, caption = "Actual diagnosis")
+knitr::kable(table(wisc.pr.hclust.clusters,diagnosis),booktabs=TRUE, caption = "Results by Non-Hierarchical clustering")
+knitr::kable(table(wisc.hclust.clusters,diagnosis),booktabs=TRUE, caption = "Results by Hierarchical clustering")
+View(diagnosis)
+knitr::kable(table(wisc.km2$cluster,diagnosis),booktabs=TRUE, caption = "Results by Kmeans")
+knitr::kable(table(wisc.pr.hclust.clusters,diagnosis),booktabs=TRUE, caption = "Results by Non-Hierarchical clustering")
+knitr::kable(table(wisc.hclust.clusters,diagnosis),booktabs=TRUE, caption = "Results by Hierarchical clustering")
+wisc.data
+View(wisc.data)
+length(diagnosis(-1))
+diagnosis(-1)
+diagnosis
+diagnosis[diagnosis==0]
+length(diagnosis[diagnosis==0])/length(diagnosis)
+length(diagnosis[diagnosis==0])
+length(diagnosis[diagnosis==1])
+179/212
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:4, k = 2) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+#By using the dendextend package we can separate the clusters by colors
+dend.pr <- as.dendrogram(wisc.pr.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+wisc.pr.hclust.clusters<- cutree(wisc.pr.hclust,k=4)
+setwd("~/Juan Dominguez/Emotiosn/Journal version test/Journal version test")
+wisc.df <-read.csv("forr.csv")
+wisc.df
+datt <-read.csv("forr.csv")
+datt <-read.csv("forr.csv")
+datt <-read.csv("forr.csv",row.names = TRUE)
+datt <-read.csv("forr.csv")
+datt <-read.csv("forr.csv")
+datt <-read.csv("forr.csv")
+datt <-read.csv("forr.csv")
+datt <-read.csv("forr.csv")
+datt <-read.delim("data.txt")
+View(datt)
+my_data <- read.delim("mtcars.txt")
+datt[1]
+datt <-read.table("data.txt")
+View(datt)
+datt <-read.table("data.txt",sep = ",", dec = ".")
+datt <-read.table("data.txt",sep =",", dec = ".")
+datt <-read.table("data.txt")
+scale(datt)
+as.data.frame(datt)
+z<-as.data.frame(datt)
+z$V1
+datt <-read.table("data.txt",header = TRUE)
+Viwe(datt)
+View(datt)
+datt <-read.table("data.txt",header = TRUE)
+View(datt)
+datt <-read.table("data.txt",header = TRUE, sep = ",")
+View(datt)
+Z<-PCA(datt,scale=TRUE)
+library(factoextra)
+library(FactoMineR)
+datt <-read.table("data.txt",header = TRUE, sep = ",")
+Z<-PCA(datt,scale=TRUE)
+View(datt)
+View(datt)
+datt <- datt[,3:end]
+Z<-PCA(datt,scale=TRUE)
+datt <- datt[,3:end]
+View(datt)
+length(datt)
+datt <- datt[,3:21]
+Z<-PCA(datt,scale=TRUE)
+View(datt)
+datt[,3:21]
+datt[3:21.]
+datt[3:21,]
+datt[,3]
+datt[3,]
+datt[,3:21]
+datt[,3:10]
+library(factoextra)
+library(FactoMineR)
+datt <-read.table("data.txt",header = TRUE, sep = ",")
+Z<-PCA(datt,scale=TRUE)
+dim(datt)
+View(datt)
+Z<-PCA(datt[4:21],scale=TRUE)
+fviz_screeplot(Z)
+Z$eig
+Z<-PCA(datt[4:21],scale=TRUE, npc=5)
+fviz_screeplot(Z)
+library(factoextra)
+library(FactoMineR)
+data <-read.table("data.txt",header = TRUE, sep = ",")
+data <- data[4:21]
+data.scale<-scale()
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+data.scale<-scale(data)
+pca.data<-PCA(data.scale)
+fviz_pca_biplot(pca.data)
+?fviz_pca_biplot
+fviz_pca_biplot(pca.data,label=data[1])
+View(data)
+library(factoextra)
+library(FactoMineR)
+data <-read.table("data.txt",header = TRUE, sep = ",")
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data,label=data[1])
+View(data)
+library(factoextra)
+library(FactoMineR)
+data <-read.table("data.txt",header = TRUE, sep = ",")
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+pca.data$eig
+source('~/Juan Dominguez/Emotiosn/Journal version test/Journal version test/testdata.R')
+library(factoextra)
+library(factoextra)
+library(FactoMineR)
+data <-read.table("data.txt",header = TRUE, sep = ",")
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+dist
+hclust(dist,method = "complete")
+library(cluster)
+library(factoextra)
+library(FactoMineR)
+library(dendextend)
+data <-read.table("data.txt",header = TRUE, sep = ",")
+library(cluster)
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+hclust(dist,method = "complete")
+dendh <- as.dendrogram(wisc.hclust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete")
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:6, k = 4) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+View(data)
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete")
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods"); abline(h = 2500, col = 2, lty = 2)
+data.clust<-hclust(dist,method = "complete")
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+View(data)
+data <-read.table("data.txt",header = TRUE, sep = ",",row.names=F)
+data <-read.table("data.txt",header = TRUE, sep = ",",row.names=FALSE)
+data <-read.table("data.txt",header = TRUE, sep = ",",row.names="")
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete")
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+View(data)
+dim(data)
+data <-read.table("data.txt",header = TRUE, sep = ",",row.names="")
+data <-data[, -0]
+datas <- data[4:21]
+data.scale<-scale(datas)
+View(data)
+data <-data[,-0]
+data
+data <-read.table("data.txt",header = TRUE, sep = ",")
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete")
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+?hclust
+data.clust<-hclust(dist,method = "complete",labels=data[1])
+data <-read.table("data.txt",header = TRUE, sep = ",")
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete",labels=data[1])
+data[1]
+data <-read.table("data.txt",header = TRUE, sep = ",")
+row.names(data) <- NULL
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete",labels=data[1])
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+View(data)
+row.names(data)<-NULL
+data
+data <-read.table("data.txt",header = TRUE, sep = ",")
+row.names(data) <- NULL
+datas <- data[4:21]
+View(datas)
+View(data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete",labels=data$sj)
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+rownames(data) <- c()
+datas <- data[4:21]
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete",labels=data$sj)
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 3) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+source('~/Juan Dominguez/Emotiosn/Journal version test/Journal version test/testdata.R')
+data
+rownames(data) <- c()
+data
+class()
+class(data)
+rownames(data) <- c()
+data
+pca.data$eig
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:11, k = 9) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+data.scale<-scale(datas)
+pca.data<-PCA(data.scale)
+fviz_screeplot(pca.data)
+fviz_pca_biplot(pca.data)
+dist<-dist(data.scale,method = "euclidean")
+data.clust<-hclust(dist,method = "complete",labels=data$sj)
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:11, k = 9) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+data.clust<-hclust(dist,method = "complete")
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:11, k = 9) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+data.clust<-hclust(dist,method = "complete",labels=data$Emotion)
+dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:11, k = 9) %>%
+plot(main = "Cancer clustering by Hierarchical methods")
+kmeans(data.clust,2,iter.max = 20)
+kmeans(data.scale,2,iter.max = 20)
+data.km3<-kmeans(data.scale,3,iter.max = 20)
+fviz_cluster(data.km3,data.scale)
+library(factoextra)
+library(FactoMineR)
+data.km3<-kmeans(data.scale,3,iter.max = 20)
+fviz_cluster(data.km3,data.scale)
