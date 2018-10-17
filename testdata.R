@@ -4,9 +4,9 @@ library(cluster)
 library(dendextend)
 library(ggsci)
 
-set.seed(50)
+set.seed(1000)
 
-data <-read.table("data.txt",header = TRUE, sep = ",")
+data <-read.table("wholedata.txt",header = TRUE, sep = ",")
 datas <- data[4:21]
 row.names(datas) <- data$sj
 data.scale<-scale(datas)
@@ -17,6 +17,7 @@ pca.data<-PCA(data.scale)
 fviz_pca_biplot(pca.data,
                 col.ind = data$Emotion, palette = "aas", legend.title="Emotions",
                 col.var="black")
+
 
 fviz_screeplot(pca.data)
 
@@ -29,3 +30,4 @@ dendh <- as.dendrogram(data.clust) %>% set("branches_k_color", value = 2:5, k = 
 data.km3<-kmeans(data.scale,3,iter.max = 50)
 fviz_cluster(data.km3,data.scale)
 
+pam.model<-pam(data.scale,k=3)

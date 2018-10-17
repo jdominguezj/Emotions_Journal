@@ -2,8 +2,8 @@
 %115200 puerto
 
 clear,clc
-datalb= dlmread('25_M_LB.log');
-data=dlmread('24_F_S.log');
+datalb= dlmread('14_F_LB.log');
+data=dlmread('13_F_A.log');
 %From 35000 --> Anger     150 seg
 % From 45000 --> Amusement 165 seg
 
@@ -11,10 +11,10 @@ data=dlmread('24_F_S.log');
 %slb=datalb(end-30000:end,1).*5/1024;%Linea base conductividad
 %plb=datalb(end-30000:end,2).*5/1024;%Linea base pulso
 
-% slb=datalb(end-45000:end,1).*5/1024;%Linea base conductividad
-% plb=datalb(end-45000:end,2).*5/1024;%Linea base pulso
-slb=datalb(:,1).*5/1024;%Linea base conductividad
-plb=datalb(:,2).*5/1024;%Linea base pulso
+slb=datalb(end-45000:end,1).*5/1024;%Linea base conductividad
+plb=datalb(end-45000:end,2).*5/1024;%Linea base pulso
+%slb=datalb(:,1).*5/1024;%Linea base conductividad
+%plb=datalb(:,2).*5/1024;%Linea base pulso
  
 %Sad
 
