@@ -2,8 +2,8 @@
 %115200 puerto
 
 clear,clc
-datalb= dlmread('14_F_LB.log');
-data=dlmread('14_F_A.log');
+datalb= dlmread('37_M_LB.log');
+data=dlmread('37_M_S.log');
 %From 35000 --> Anger     150 seg
 % From 45000 --> Amusement 165 seg
 
@@ -126,8 +126,15 @@ winh=hamming(2500);
 plm=mean(hrlb); %Media de linea base de ritmo cardiaco
 pls=std(hrlb);  %Desv standar de linea base de ritmo cardiaco
 
+%Calculo de la FFT para la se√±al de Ritmo
 for i=1:n_iter
-  X=fft(c{i}.*winh,15000);
+ V=fft(c{i});
+ V = V(1:na/2+1);
+ psdx = (1/(Fs*na)) * abs(xdft).^2;
+ psdx(2:end-1) = 2*psdx(2:end-1);
+ freq = 0:Fs/len):Fs/2;
+ 
+ X=fft(c{i}.*winh,15000);
  bpm=abs(X);
  bpm(1:30)=0;            
  bpm(54:end)=0;
@@ -154,14 +161,14 @@ bk=arrayfun(@(i) mean(gsr(i:i+nk-1)),1:nk:length(gsr)-nk+1);
 %GSR features
 
 diff_gsrmm_lb=diff(gsrmmlb); %Derivate of the baseline GSR
-avg_diff_gsrmm_lb=mean(diff_gsrmm_lb); %Average of the GSR's baseline derivate
-amountneg_diff_gsrmm_lb=length(diff_gsrmm_lb(diff_gsrmm_lb<0));%Amount of negative samples
-ratio_amountneg_lb=amountneg_diff_gsrmm_lb/length(diff_gsrmm_lb);%Proportion of negative values vs the whole lb values
+avg_diff_gsrmm_lb=mean(diff_gsrmm_lb) %Average of the GSR's baseline derivate
+amountneg_diff_gsrmm_lb=length(diff_gsrmm_lb(diff_gsrmm_lb<0))%Amount of negative samples
+ratio_amountneg_lb=amountneg_diff_gsrmm_lb/length(diff_gsrmm_lb)%Proportion of negative values vs the whole lb values
 %------------------------------------------------------------------------------------------
 diff_gsrmm   =diff(gsrmm);   %Derivate of the GSR during the stimulus
-avg_dif_gsrmm = mean(diff_gsrmm); %%Average of the GSR response during the stimulus
-amountneg_diff_gsrmm=length(diff_gsrmm(diff_gsrmm<0));%Amount of negative samples
-ratio_amountneg=amountneg_diff_gsrmm/length(diff_gsrmm);%Proportion of negative values vs the whole stimulus values
+avg_dif_gsrmm = mean(diff_gsrmm) %%Average of the GSR response during the stimulus
+amountneg_diff_gsrmm=length(diff_gsrmm(diff_gsrmm<0))%Amount of negative samples
+ratio_amountneg=amountneg_diff_gsrmm/length(diff_gsrmm)%Proportion of negative values vs the whole stimulus values
 %------------------------------------------------------------------------------------------
 %Convolucion GSR con Bartlett 20 puntos
 scrb=downsample(gsr,25);
@@ -203,49 +210,49 @@ disp('Features extraction')
 
 disp('Baseline data')
  
-% Baseline
-% 
-% GSR
-% fprintf('SCR Neutral  Mean %8f .\n',mean(gsrmmlb));
-% fprintf('SCR Neutral  Standard deviation %8f .\n',std(gsrmmlb));
-% fprintf('SCR Neutral  Dynamic range %8f .\n',max(gsrmmlb)-min(gsrmmlb));
-% fprintf('SCR Average Derivate %8f .\n',avg_diff_gsrmm_lb);
-% fprintf('SCR Amount of negative samples %8f .\n',amountneg_diff_gsrmm_lb);
-% fprintf('SCR Proportion of negative values vs the whole stimulus %8f .\n',ratio_amountneg_lb);
-% 
-% BVP
-% fprintf('Heart Rate Neutral Mean %8f .\n',mean(hrlb));
-% fprintf('Heart Rate Neutral Standard deviation %8f .\n',std(hrlb));
-% fprintf('Heart Rate Neutral Dynamic range %8f .\n',(max(hrlb)-min(hrlb)));
-% fprintf('Heart Rate Neutral Mode (Frequency) %8f .\n',mode(hrlb));
-% fprintf('Heart Rate Mean (Time) %8f .\n',mean(interbeatlb));
-% fprintf('Heart Rate SDNN (Time) %8f .\n',std(diff(NNlb)));
-% fprintf('Heart Rate RMSSD (Time) %8f .\n',rms(diff(NNlb)));
-% 
-% Emotion
-% 
-% disp('Emotion')
-% fprintf('SCR Mean %8f .\n',mean(gsrmm));
-% fprintf('SCR Standard deviation %8f .\n',std(gsrmm));
-% fprintf('SCR Neutral  Dynamic range %8f .\n',(max(gsrmm)-min(gsrmm)));
-% fprintf('SCR Average Derivate %8f .\n',avg_dif_gsrmm);
-% fprintf('SCR Amount of negative samples %8f .\n',amountneg_diff_gsrmm);
-% fprintf('SCR Proportion of negative values vs the whole stimulus values %8f .\n',ratio_amountneg);
-% 
-% 
-% fprintf('Heart Rate Mean (FFT) %8f .\n',mean(hr));
-% fprintf('Heart Rate Standard deviation %8f .\n',std(hr));
-% fprintf('Heart Rate Dynamic range %8f .\n',(max(hr)-min(hr)));
-% fprintf('Heart Rate Mode (Frequency) %8f .\n',mode(hr));
-% fprintf('Heart Rate Mean (Time) %8f .\n',mean(interbeat));
-% fprintf('Heart Rate SDNN (Time) %8f .\n',std(diff(NN)));
-% fprintf('Heart Rate RMSSD (Time) %8f .\n',rms(diff(NN)));
-% 
+%Baseline
+
+%GSR
+fprintf('SCR Neutral  Mean %8f .\n',mean(gsrmmlb));
+fprintf('SCR Neutral  Standard deviation %8f .\n',std(gsrmmlb));
+fprintf('SCR Neutral  Dynamic range %8f .\n',max(gsrmmlb)-min(gsrmmlb));
+fprintf('SCR Average Derivate %8f .\n',avg_diff_gsrmm_lb);
+fprintf('SCR Amount of negative samples %8f .\n',amountneg_diff_gsrmm_lb);
+fprintf('SCR Proportion of negative values vs the whole stimulus %8f .\n',ratio_amountneg_lb);
+
+%BVP
+fprintf('Heart Rate Neutral Mean %8f .\n',mean(hrlb));
+fprintf('Heart Rate Neutral Standard deviation %8f .\n',std(hrlb));
+fprintf('Heart Rate Neutral Dynamic range %8f .\n',(max(hrlb)-min(hrlb)));
+fprintf('Heart Rate Neutral Mode (Frequency) %8f .\n',mode(hrlb));
+%fprintf('Heart Rate Mean (Time) %8f .\n',mean(interbeatlb));
+fprintf('Heart Rate SDNN (Time) %8f .\n',std(diff(NNlb)));
+fprintf('Heart Rate RMSSD (Time) %8f .\n',rms(diff(NNlb)));
+
+%Emotion
+
+disp('Emotion')
+fprintf('SCR Mean %8f .\n',mean(gsrmm));
+fprintf('SCR Standard deviation %8f .\n',std(gsrmm));
+fprintf('SCR Neutral  Dynamic range %8f .\n',(max(gsrmm)-min(gsrmm)));
+fprintf('SCR Average Derivate %8f .\n',avg_dif_gsrmm);
+fprintf('SCR Amount of negative samples %8f .\n',amountneg_diff_gsrmm);
+fprintf('SCR Proportion of negative values vs the whole stimulus values %8f .\n',ratio_amountneg);
+
+
+fprintf('Heart Rate Mean (FFT) %8f .\n',mean(hr));
+fprintf('Heart Rate Standard deviation %8f .\n',std(hr));
+fprintf('Heart Rate Dynamic range %8f .\n',(max(hr)-min(hr)));
+fprintf('Heart Rate Mode (Frequency) %8f .\n',mode(hr));
+%fprintf('Heart Rate Mean (Time) %8f .\n',mean(interbeat));
+fprintf('Heart Rate SDNN (Time) %8f .\n',std(diff(NN)));
+fprintf('Heart Rate RMSSD (Time) %8f .\n',rms(diff(NN)));
+
 
 %Array info
 
-infolb=[mean(gsrmmlb),std(gsrmmlb),max(gsrmmlb)-min(gsrmmlb),avg_diff_gsrmm_lb,amountneg_diff_gsrmm_lb,ratio_amountneg_lb,mean(hrlb),std(hrlb),max(hrlb)-min(hrlb),mode(hrlb),std(diff(NNlb)),rms(diff(NNlb))];
-infoem=[mean(gsrmm),std(gsrmm),max(gsrmm)-min(gsrmm),avg_dif_gsrmm,amountneg_diff_gsrmm,ratio_amountneg,mean(hr),std(hr),max(hr)-min(hr),mode(hr),std(diff(NN)),rms(diff(NN))];
+infolb=[mean(gsrmmlb),std(gsrmmlb),max(gsrmmlb)-min(gsrmmlb),avg_diff_gsrmm_lb,amountneg_diff_gsrmm_lb,ratio_amountneg_lb,mean(hrlb),std(hrlb),max(hrlb)-min(hrlb),mode(hrlb),mean(interbeatlb),std(diff(NNlb)),rms(diff(NNlb))];
+infoem=[mean(gsrmm),std(gsrmm),max(gsrmm)-min(gsrmm),avg_dif_gsrmm,amountneg_diff_gsrmm,ratio_amountneg,mean(hr),std(hr),max(hr)-min(hr),mode(hr),mean(interbeat),std(diff(NN)),rms(diff(NN))];
 
 fprintf('%8f,',infolb)
 disp('.')
@@ -253,3 +260,4 @@ fprintf('%8f,',infoem)
 
 %AÒadir varianza de cada seÒal asi como la Peak to peak interval(PPG) y la varianza del mismo y el ZCR de la
 %derivada de la seÒal de GSR
+
