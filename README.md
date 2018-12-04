@@ -5,10 +5,10 @@ This approach attempted to predict an emotional state by using machine learning 
 A experimental protocol was developed to carry out the experiments. 
 Several .log files are contained within this repository, to further research works and analysis.
 
-The explantion of the recorded data is below.
+The explantion of the recorded data as is presented below.
 
-LB: Baseline data
-LB2: Baseline data after the first video
-A:Amusement video
-S: Sad video
+Number of participant_Gender_Stimuli
+
+Gender could be F or M.
+Stimuli varies from A (Amusement), S(Sadness), and LB (Baseline or Neutral)
 
